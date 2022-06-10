@@ -5,21 +5,50 @@
  */
 package tony;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author rober
  */
+
+
+
+
+
 public class index extends javax.swing.JFrame {
 
+    
+    conexion cc = new conexion();
+    Connection cx = cc.conect(); 
+    
+    
+    
+    
+    
     /**
      * Creates new form index
      */
     public index() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +59,7 @@ public class index extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
+        txtuser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bLogin = new javax.swing.JButton();
@@ -45,7 +74,7 @@ public class index extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setText("Soluciones Digitales y Hardware");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 260, 30));
-        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 170, -1));
+        getContentPane().add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setText("Usuario");
@@ -77,13 +106,24 @@ public class index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
-        // TODO add your handling code here:
+        
+        
+        validarUsuario();
+        
+        
+        
+        // se documento el siguiente codigo
+        // es para inicio del sistema sin DB
+        
+        
+        
+        /*
 
         char clave[]=password.getPassword();
 
         String clavedef=new String(clave);
 
-        if (user.getText().equals("Admin") && clavedef.equals("nopuedomarta")){
+        if (txtuser.getText().equals("Admin") && clavedef.equals("nopuedomarta")){
 
             this.dispose();
 
@@ -96,7 +136,7 @@ public class index extends javax.swing.JFrame {
 
         }
 
-        else if (user.getText().equals("Alegria") && clavedef.equals("mucharisa")){
+        else if (txtuser.getText().equals("Alegria") && clavedef.equals("mucharisa")){
 
             this.dispose();
 
@@ -115,13 +155,81 @@ public class index extends javax.swing.JFrame {
                 + "Por favor ingrese un usuario y/o contraseña correctos", "Acceso denegado",
                 JOptionPane.ERROR_MESSAGE);
 
-            user.setText("");
+            txtuser.setText("");
             password.setText("");
 
         }
 
+        
+        
+        */
+        
+        
+        
     }//GEN-LAST:event_bLoginActionPerformed
 
+    
+    public void validarUsuario(){
+    
+        int resultado = 0;
+        String pass1 = String.valueOf(password.getPassword());
+        String user1 = txtuser.getText();
+        String SQL = "select * from users where user='"+user1+"' and password='"+pass1+"' ";
+        
+        
+        try {
+            
+            Statement st = cx.createStatement();
+            ResultSet rs = st.executeQuery(SQL);
+            
+            
+            if (rs.next()) {
+                
+                resultado = 1;
+                
+                if (resultado==1) {
+                    
+                    menu ven = new menu();
+                    ven.setVisible(true);
+                    this.dispose();
+                    
+                }
+                
+            }
+            
+            
+            else {
+            
+                JOptionPane.showMessageDialog(null, "Error de Acceso, Usuario o contraseña incorrectos");
+            
+            }
+            
+            
+            
+            
+        } catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de Inicio"+e.getMessage());
+            
+            
+        }
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -165,6 +273,6 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField password;
-    private javax.swing.JTextField user;
+    private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
 }

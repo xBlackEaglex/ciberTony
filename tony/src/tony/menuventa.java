@@ -16,6 +16,7 @@ public class menuventa extends javax.swing.JFrame {
      */
     public menuventa() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
