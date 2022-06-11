@@ -8,6 +8,8 @@ package tony;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 
@@ -29,6 +31,30 @@ public class admin extends javax.swing.JFrame {
     public admin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.listaUsers.removeAllItems();
+        
+        
+        try {
+            
+            Statement Sent = cx.createStatement();
+            ResultSet rs = Sent.executeQuery("select * from users");
+            
+            while (rs.next()) {
+                this.listaUsers.addItem(rs.getString("user"));
+                
+            }
+            
+            
+            
+        } 
+        
+        catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null,"Error en Lista " + e);
+            
+        }
+        
+        
     }
 
     

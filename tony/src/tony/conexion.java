@@ -19,8 +19,8 @@ public class conexion {
     public Connection conect(){
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost/logintony","root","123");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost/logintony","root","1234");
             // JOptionPane.showMessageDialog(null,"conexion exitosa");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.print("error de conexion");
