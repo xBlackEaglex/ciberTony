@@ -5,157 +5,130 @@
  */
 package tony;
 
-
+import java.io.Console;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
-
 
 /**
  *
  * @author Iddot
  */
 public class admin extends javax.swing.JFrame {
-    
-    
+
     conexion cc = new conexion();
-    Connection cx = cc.conect(); 
-    
+    Connection cx = cc.conect();
 
     /**
      * Creates new form admin
      */
+    
+    
+    int contador = 0;
+    
+    
+    
+    
     public admin() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.listaUsers.removeAllItems();
-        
-        
+
         try {
-            
+
             Statement Sent = cx.createStatement();
             ResultSet rs = Sent.executeQuery("select * from users");
-            
+
             while (rs.next()) {
                 this.listaUsers.addItem(rs.getString("user"));
-                
+
             }
             
-            
-            
-        } 
-        
-        catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null,"Error en Lista " + e);
-            
+            contador ++;
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Error en Lista " + e);
+
         }
-        
-        
+
     }
 
-    
     //Inicio de variables
-    
     public int checkVenta1 = 0;
     public int checkAlmacen1 = 0;
     public int checkRRHH1 = 0;
     public int checkProduccion1 = 0;
     
+    public String seleccion = "";
     
-    public void agregarPermisos(){
-        
-        
-        
-        
+
+    public void agregarPermisos() {
+
         if (checkVenta.isSelected()) {
-            
-            
+
             checkVenta1 = 1;
-            
+
+        } else {
+
+            checkVenta1 = 0;
+
         }
-        
-        
-        else {
-            
-            checkVenta1 = 0; 
-            
-        }
-        
-        
+
         if (checkAlmacen.isSelected()) {
-            
-            
+
             checkAlmacen1 = 1;
-            
+
+        } else {
+
+            checkAlmacen1 = 0;
+
         }
-        
-        
-        else {
-            
-            checkAlmacen1 = 0; 
-            
-        }
-        
-        
+
         if (checkRRHH.isSelected()) {
-            
-            
+
             checkRRHH1 = 1;
-            
+
+        } else {
+
+            checkRRHH1 = 0;
+
         }
-        
-        
-        else {
-            
-            checkRRHH1 = 0; 
-            
-        }
-        
-        
+
         if (checkProduccion.isSelected()) {
-            
-            
+
             checkProduccion1 = 1;
-            
+
+        } else {
+
+            checkProduccion1 = 0;
+
         }
-        
-        
-        else {
-            
-            checkProduccion1 = 0; 
-            
-        }
-        
-        
-        
-        
-        
+
         String SQL = "insert into users (ventas,almacen,RRHH,produccion) value(?,?,?,?)";
-        
+
         try {
-            
-            
-            PreparedStatement pst=cx.prepareStatement(SQL);
-            
+
+            PreparedStatement pst = cx.prepareStatement(SQL);
+
             pst.setInt(1, checkVenta1);
             pst.setInt(2, checkAlmacen1);
             pst.setInt(3, checkRRHH1);
             pst.setInt(4, checkProduccion1);
-            
+
             pst.executeUpdate();
-            
+
             JOptionPane.showMessageDialog(null, "Registro exitoso");
-            
-            
+
         } catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null, "Error de registro"+e.getMessage());
-            
+
+            JOptionPane.showMessageDialog(null, "Error de registro" + e.getMessage());
+
         }
+
         
         
         
@@ -164,11 +137,7 @@ public class admin extends javax.swing.JFrame {
         
         
         
-        
-        
-        
-        
-    /*    if (checkVenta1 == 1) {
+        /*    if (checkVenta1 == 1) {
             
            System.out.println("check ventas es 1");
             
@@ -185,20 +154,9 @@ public class admin extends javax.swing.JFrame {
         
         
         
-    */    
-        
-        
+         */
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -293,11 +251,13 @@ public class admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaUsersActionPerformed
-        
+
     
         
         
-    
+        seleccion = (String)listaUsers.getSelectedItem();
+        
+        System.out.println(seleccion);
         
         
         
@@ -305,12 +265,52 @@ public class admin extends javax.swing.JFrame {
         
         
         
-      // documetado para arreglos  
+        /*
+        
+        try {
+            
+            
+            if (this.contador>0){
+
+            Statement sent1 = cx.createStatement();
+            ResultSet rs1 = sent1.executeQuery("select * from users where user = '"+this.listaUsers.getSelectedItem()+"' ");  
+            rs1.next();
+            seleccion = String.valueOf(rs1.getInt("user"));
+            
+            
+            System.out.println(seleccion);
+                    
+            }
+            
+            
+            
+        } catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de captura de lista" + e.getMessage());
+            
+            
+        }
+        
+        
+        
+        */
         
         
         
         
-      /*  if ("Admin".equals(listaUsers.getSelectedItem().toString())){
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        // documetado para arreglos  
+        /*  if ("Admin".equals(listaUsers.getSelectedItem().toString())){
 
              checkVenta.setSelected(true);
              checkAlmacen.setSelected(true);
@@ -351,50 +351,42 @@ public class admin extends javax.swing.JFrame {
      
         
         
-       */ 
-        
-        
-        
+         */
+
     }//GEN-LAST:event_listaUsersActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         this.dispose();
-        
+
         nuevoUser ven2 = new nuevoUser();
         ven2.setVisible(true);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
+
         this.dispose();
-        
+
         menu ven4 = new menu();
         ven4.setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void checkVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVentaActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_checkVentaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+
         agregarPermisos();
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
