@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author rober
@@ -24,6 +23,8 @@ public class index extends javax.swing.JFrame {
     
     conexion cc = new conexion();
     Connection cx = cc.conect(); 
+   
+    
     
     
     
@@ -40,6 +41,9 @@ public class index extends javax.swing.JFrame {
     }
 
     
+    
+    
+    public String userPrincipal = "";
     
     
     
@@ -74,6 +78,12 @@ public class index extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setText("Soluciones Digitales y Hardware");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 260, 30));
+
+        txtuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtuserActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, 170, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
@@ -108,7 +118,17 @@ public class index extends javax.swing.JFrame {
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         
         
+        
         validarUsuario();
+        
+        System.out.println(userPrincipal);
+        
+        
+        
+        
+        
+        //JOptionPane.showMessageDialog(null, userPrincipal);
+        
         
         
         
@@ -168,6 +188,10 @@ public class index extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bLoginActionPerformed
 
+    private void txtuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtuserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtuserActionPerformed
+
     
     public void validarUsuario(){
     
@@ -175,7 +199,7 @@ public class index extends javax.swing.JFrame {
         String pass1 = String.valueOf(password.getPassword());
         String user1 = txtuser.getText();
         String SQL = "select * from users where user='"+user1+"' and password='"+pass1+"' ";
-        
+        userPrincipal = user1;
         
         try {
             
@@ -191,7 +215,10 @@ public class index extends javax.swing.JFrame {
                     
                     menu ven = new menu();
                     ven.setVisible(true);
-                    this.dispose();
+                   
+                    this.setVisible(false);
+                    
+                    
                     
                 }
                 
@@ -201,7 +228,10 @@ public class index extends javax.swing.JFrame {
             else {
             
                 JOptionPane.showMessageDialog(null, "Error de Acceso, Usuario o contraseña incorrectos");
-            
+                
+                password.setText("");
+                txtuser.setText("");
+           
             }
             
             

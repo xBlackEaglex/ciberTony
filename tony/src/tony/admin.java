@@ -66,6 +66,8 @@ public class admin extends javax.swing.JFrame {
     public String seleccion = "";
     
 
+    
+
     public void agregarPermisos() {
 
         if (checkVenta.isSelected()) {
@@ -108,7 +110,7 @@ public class admin extends javax.swing.JFrame {
 
         }
 
-        String SQL = "insert into users (ventas,almacen,RRHH,produccion) value(?,?,?,?)";
+        String SQL = "UPDATE users SET ventas = ?, almacen = ?, RRHH = ?, produccion = ? WHERE user='"+seleccion+"' ";
 
         try {
 
@@ -256,8 +258,7 @@ public class admin extends javax.swing.JFrame {
         
         
         seleccion = (String)listaUsers.getSelectedItem();
-        
-        System.out.println(seleccion);
+       
         
         
         

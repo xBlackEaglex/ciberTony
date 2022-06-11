@@ -5,11 +5,25 @@
  */
 package tony;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author rober
  */
 public class menu extends javax.swing.JFrame {
+    
+    conexion cc = new conexion();
+    Connection cx = cc.conect();
+    index permisos = new index();
+        
+    
+    
+    
+    
 
     /**
      * Creates new form menu
@@ -17,8 +31,20 @@ public class menu extends javax.swing.JFrame {
     public menu() {
         initComponents();
         this.setLocationRelativeTo(null);
-    }
+        
+        
 
+        
+    }
+    
+    
+    
+
+    public String useractual = permisos.userPrincipal;
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -123,7 +149,12 @@ public class menu extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        this.dispose();
+        
+        
+        extraervariable();
+        
+        
+        this.setVisible(false);
         
         admin ven3 = new admin();
         ven3.setVisible(true);
@@ -131,6 +162,87 @@ public class menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    
+    
+    public void extraervariable(){
+        
+        
+      
+               
+        
+        
+        
+        
+        JOptionPane.showMessageDialog(null, useractual);
+        
+        
+     /*   
+        
+        int permisosventa = 0;
+        int resultado = 0;
+        String SQL = "select ventas, almacen, RRHH, produccion from users where user='"+useractual+"' ";
+        
+        
+        try {
+            
+            Statement st = cx.createStatement();
+            ResultSet rs = st.executeQuery(SQL);
+            
+            
+            if (rs.next()) {
+                
+                resultado = 1;
+                
+                if (resultado==1) {
+                    
+                  
+                    int permisoventa = (int)rs.getObject(1);
+                    
+                    
+                    
+                    
+                }
+                
+            }
+            
+            
+            else {
+            
+            
+            }
+            
+            
+          } 
+        catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de permisos en logo"+e.getMessage());
+            
+            
+        }  
+        
+        
+        
+        
+      */  
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
