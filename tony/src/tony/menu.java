@@ -32,7 +32,7 @@ public class menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
-        
+        extraervariable();
 
         
     }
@@ -150,10 +150,6 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        
-        extraervariable();
-        
-        
         this.setVisible(false);
         
         admin ven3 = new admin();
@@ -167,19 +163,17 @@ public class menu extends javax.swing.JFrame {
     
     public void extraervariable(){
         
-        
-      
-               
+
         
         
-        
-        
-        JOptionPane.showMessageDialog(null, useractual);
-        
-        
-     /*   
+     
         
         int permisosventa = 0;
+        int permisosalmacen = 0;
+        int permisosRRHH = 0;
+        int permisosproduccion = 0;
+        
+        
         int resultado = 0;
         String SQL = "select ventas, almacen, RRHH, produccion from users where user='"+useractual+"' ";
         
@@ -197,8 +191,14 @@ public class menu extends javax.swing.JFrame {
                 if (resultado==1) {
                     
                   
-                    int permisoventa = (int)rs.getObject(1);
+                    permisosventa = (int)rs.getObject(1);
+                    permisosalmacen = (int)rs.getObject(2);
+                    permisosRRHH = (int)rs.getObject(3);
+                    permisosproduccion = (int)rs.getObject(4);
                     
+
+                    
+                    System.out.println(permisosventa +""+ permisosalmacen +""+ permisosRRHH +""+ permisosproduccion);
                     
                     
                     
@@ -217,15 +217,14 @@ public class menu extends javax.swing.JFrame {
         catch (Exception e) {
             
             
-            JOptionPane.showMessageDialog(null, "Error de permisos en logo"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error de permisos en logo"+e.getMessage()+" Puede que falte asignar permisos al usuario ");
             
             
         }  
         
         
         
-        
-      */  
+       
         
         
         

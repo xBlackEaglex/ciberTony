@@ -43,7 +43,7 @@ public class index extends javax.swing.JFrame {
     
     
     
-    public String userPrincipal = "";
+    public  static String userPrincipal = "";
     
     
     
@@ -121,7 +121,6 @@ public class index extends javax.swing.JFrame {
         
         validarUsuario();
         
-        System.out.println(userPrincipal);
         
         
         
