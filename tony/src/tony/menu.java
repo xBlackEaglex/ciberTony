@@ -55,8 +55,8 @@ public class menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -81,19 +81,19 @@ public class menu extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 120, 110));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/boton venta.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton venta.png"))); // NOI18N
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 110, 110));
-
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/boton almacen.png"))); // NOI18N
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton almacen.png"))); // NOI18N
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 120, 110));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/boton venta.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton venta.png"))); // NOI18N
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 110, 110));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/boton rrhh.png"))); // NOI18N
@@ -164,14 +164,27 @@ public class menu extends javax.swing.JFrame {
     public void extraervariable(){
         
 
-        
-        
-     
+
         
         int permisosventa = 0;
         int permisosalmacen = 0;
         int permisosRRHH = 0;
         int permisosproduccion = 0;
+        int permisosadmin = 0;
+        
+        
+        if (useractual.equals("Admin") || useractual.equals("admin")) {
+            
+            permisosadmin = 1;
+            
+        }
+        
+        else {
+        }
+        
+        
+        
+        
         
         
         int resultado = 0;
@@ -198,7 +211,7 @@ public class menu extends javax.swing.JFrame {
                     
 
                     
-                    System.out.println(permisosventa +""+ permisosalmacen +""+ permisosRRHH +""+ permisosproduccion);
+                    System.out.println(permisosventa +""+ permisosalmacen +""+ permisosRRHH +""+ permisosproduccion +""+ permisosadmin);
                     
                     
                     
@@ -220,7 +233,96 @@ public class menu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error de permisos en logo"+e.getMessage()+" Puede que falte asignar permisos al usuario ");
             
             
-        }  
+        }
+        
+        
+        
+        
+        
+        
+        if (permisosventa==1) {
+            
+            jButton1.setVisible(true);
+            jLabel2.setVisible(true);
+            
+        }
+        
+        else {
+        
+            jButton1.setVisible(false);
+            jLabel2.setVisible(false);
+        
+        }
+        
+        
+        
+        
+        if (permisosalmacen==1) {
+            
+            jButton3.setVisible(true);
+            jLabel4.setVisible(true);
+            
+        }
+        
+        else {
+        
+            jButton3.setVisible(false);
+            jLabel4.setVisible(false);
+        
+        }
+        
+        
+        
+        
+        if (permisosRRHH==1) {
+            
+            jButton4.setVisible(true);
+            jLabel3.setVisible(true);
+            
+        }
+        
+        else {
+        
+            jButton4.setVisible(false);
+            jLabel3.setVisible(false);
+        
+        }
+        
+        
+        
+        
+        if (permisosproduccion==1) {
+            
+            jButton5.setVisible(true);
+            jLabel5.setVisible(true);
+            
+        }
+        
+        else {
+        
+            jButton5.setVisible(false);
+            jLabel5.setVisible(false);
+        
+        }
+        
+        
+        
+        
+        if (permisosadmin==1) {
+            
+            jButton2.setVisible(true);
+            jLabel1.setVisible(true);
+            
+        }
+        
+        else {
+        
+            jButton2.setVisible(false);
+            jLabel1.setVisible(false);
+        
+        }
+        
+        
         
         
         

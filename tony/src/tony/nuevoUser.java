@@ -159,6 +159,11 @@ public class nuevoUser extends javax.swing.JFrame {
        
         
       agregarUsuario();
+      
+      txtnom.setText("");
+      txtuser.setText("");
+      pass.setText("");
+      
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
