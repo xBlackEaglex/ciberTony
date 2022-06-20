@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import produccion.r_produccion;
 import rrhh.menuRRHH;
 
 /**
@@ -24,6 +25,8 @@ public class menu extends javax.swing.JFrame {
     
     
     menuRRHH venrrhh = new menuRRHH();
+    r_produccion venproduccion = new r_produccion();
+    
     
     
     
@@ -133,6 +136,11 @@ public class menu extends javax.swing.JFrame {
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton produccion.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 120, 100));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -214,6 +222,17 @@ public class menu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        venproduccion.setVisible(true);
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     
     
