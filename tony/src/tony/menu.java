@@ -5,6 +5,7 @@
  */
 package tony;
 
+import almacen.prueba;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -19,6 +20,13 @@ public class menu extends javax.swing.JFrame {
     conexion cc = new conexion();
     Connection cx = cc.conect();
     index permisos = new index();
+    
+    
+    
+    
+    prueba venAlmacen = new prueba();
+    
+    
         
     
     
@@ -86,6 +94,11 @@ public class menu extends javax.swing.JFrame {
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton almacen.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 120, 110));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
@@ -93,6 +106,11 @@ public class menu extends javax.swing.JFrame {
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton venta.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 110, 110));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
@@ -157,6 +175,29 @@ public class menu extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        venAlmacen.setVisible(true);
+        this.setVisible(false);
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     
