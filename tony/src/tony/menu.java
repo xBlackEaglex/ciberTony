@@ -5,11 +5,12 @@
  */
 package tony;
 
-import almacen.prueba;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import rrhh.menuRRHH;
 
 /**
  *
@@ -22,9 +23,11 @@ public class menu extends javax.swing.JFrame {
     index permisos = new index();
     
     
+    menuRRHH venrrhh = new menuRRHH();
     
     
-    prueba venAlmacen = new prueba();
+    
+    
     
     
         
@@ -118,6 +121,11 @@ public class menu extends javax.swing.JFrame {
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/big boton rrhh.png"))); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 110, 110));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
@@ -192,12 +200,20 @@ public class menu extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        venAlmacen.setVisible(true);
-        this.setVisible(false);
-        
+
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        venrrhh.setVisible(true); 
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     

@@ -24,7 +24,7 @@ public class conexion {
             // JOptionPane.showMessageDialog(null,"conexion exitosa");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.print("error de conexion");
-            JOptionPane.showMessageDialog(null,"error de conexion "+e);
+            JOptionPane.showMessageDialog(null,"error de conexion principal "+e);
         }
         return con;
     }
