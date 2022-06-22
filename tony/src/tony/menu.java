@@ -6,6 +6,7 @@
 package tony;
 
 
+import almacen.almacen1;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -26,6 +27,7 @@ public class menu extends javax.swing.JFrame {
     
     menuRRHH venrrhh = new menuRRHH();
     r_produccion venproduccion = new r_produccion();
+    almacen1 venAlmacen = new almacen1();
     
     
     
@@ -207,6 +209,8 @@ public class menu extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
+        venAlmacen.setVisible(true);
+        this.setVisible(false);
         
 
         
