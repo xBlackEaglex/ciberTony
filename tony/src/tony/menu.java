@@ -13,6 +13,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import produccion.r_produccion;
 import rrhh.menuRRHH;
+import ventas_jp.init;
 
 /**
  *
@@ -28,6 +29,7 @@ public class menu extends javax.swing.JFrame {
     menuRRHH venrrhh = new menuRRHH();
     r_produccion venproduccion = new r_produccion();
     almacen1 venAlmacen = new almacen1();
+    init venVEntas = new init();
     
     
     
@@ -199,7 +201,9 @@ public class menu extends javax.swing.JFrame {
         
         
         
-        
+        venVEntas.setVisible(true);
+        this.setVisible(false);
+            
         
         
         
