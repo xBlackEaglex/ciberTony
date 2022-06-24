@@ -16,7 +16,7 @@ public class init extends javax.swing.JFrame {
      */
     public init() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -31,7 +31,6 @@ public class init extends javax.swing.JFrame {
         sopor = new javax.swing.JButton();
         vent = new javax.swing.JButton();
         client = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -48,41 +47,43 @@ public class init extends javax.swing.JFrame {
                 soporActionPerformed(evt);
             }
         });
-        getContentPane().add(sopor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 260, 40));
+        getContentPane().add(sopor, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 260, 60));
 
         vent.setBackground(new java.awt.Color(123, 104, 238));
         vent.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         vent.setForeground(new java.awt.Color(255, 255, 255));
+        vent.setIcon(new javax.swing.ImageIcon(getClass().getResource("/galeria/ventas.png"))); // NOI18N
         vent.setText("VENTAS");
         vent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ventActionPerformed(evt);
             }
         });
-        getContentPane().add(vent, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 260, -1));
+        getContentPane().add(vent, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 260, 60));
 
         client.setBackground(new java.awt.Color(123, 104, 238));
         client.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         client.setForeground(new java.awt.Color(255, 255, 255));
+        client.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\clientes.png")); // NOI18N
         client.setText("CLIENTES");
         client.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clientActionPerformed(evt);
             }
         });
-        getContentPane().add(client, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 260, -1));
-
-        jButton2.setBackground(new java.awt.Color(123, 104, 238));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("AYUDA");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 100, 40));
+        getContentPane().add(client, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 260, -1));
 
         jButton3.setBackground(new java.awt.Color(123, 104, 238));
         jButton3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
         jButton3.setText("SALIR");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 100, 40));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 150, 40));
 
         jLabel5.setBackground(new java.awt.Color(123, 104, 238));
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -97,16 +98,16 @@ public class init extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventActionPerformed
-        ventass newframe = new ventass(); 
+        ventass newframe = new ventass();        
         
         newframe.setVisible(true);
         
-        this.dispose(); 
+        this.dispose();        
 
     }//GEN-LAST:event_ventActionPerformed
 
     private void clientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientActionPerformed
-        clientes newframe = new clientes(); 
+        clientes newframe = new clientes();        
         
         newframe.setVisible(true);
         
@@ -114,12 +115,17 @@ public class init extends javax.swing.JFrame {
     }//GEN-LAST:event_clientActionPerformed
 
     private void soporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soporActionPerformed
-        soporte newframe = new soporte(); 
+        soporte newframe = new soporte();        
         
         newframe.setVisible(true);
         
         this.dispose();
     }//GEN-LAST:event_soporActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        System.exit(0);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,7 +163,6 @@ public class init extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton client;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;

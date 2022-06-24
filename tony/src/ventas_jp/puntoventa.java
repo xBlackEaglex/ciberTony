@@ -16,7 +16,7 @@ public class puntoventa extends javax.swing.JFrame {
      */
     public puntoventa() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -164,7 +164,7 @@ public class puntoventa extends javax.swing.JFrame {
         jButton18.setBackground(new java.awt.Color(123, 104, 238));
         jButton18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setText("REGRESAR");
+        jButton18.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
         jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton18ActionPerformed(evt);
@@ -193,7 +193,11 @@ public class puntoventa extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        ventass newframe = new ventass();
+
+        newframe.setVisible(true);
+
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
 
     /**

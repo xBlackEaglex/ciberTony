@@ -9,14 +9,61 @@ package ventas_jp;
  *
  * @author pauli
  */
+
+import java.sql.Connection;
+//import java.sql.DriverManager;
+import java.sql.PreparedStatement; 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class cotizaciones extends javax.swing.JFrame {
 
+    public void agregarCotizacion() {
+    
+        conexion cc = new conexion();
+        Connection cx = cc.conect();
+       
+        String SQL = "insert into tabla_general (pno_nota,pcliente,pentrega,pcantidad,pdetalles,"
+                + "cofolio,cocliente,coproductos,cono_piezas,cofecha,"
+                + "pvcantidad,pvproducto,pvprecio,"
+                + "fanombre,faapellidos,farfc,facfdi,fadomicilio,facorreo,"
+                + "prclave,prdescripcion,prprecio,"
+                + "seide,sedetalles,secosto, "
+                + "clnombre,clapellidos,cldireccion,"
+                + "ticliente,tiasunto,titecnico,tidescripcion,tiestado,tifechainicio,tifechafin) "
+                + "value(0,'','',0,''  ,?,?,?,?,?,  0,'',0,  '','','','','','',  '','',0,  0,'',0,  '','','',  '','','','','','','' )";
+        
+    /* debo poner todos los campos de la tabla para que no marque error, los varchar llevan solo las comillas y los int llevan un cero **/
+        try {
+            
+            PreparedStatement pst=cx.prepareStatement(SQL);
+            
+            pst.setString(1, cofolioo.getText()); 
+            pst.setString(2, coclientee.getText());
+            pst.setString(3, coproductoss.getText());
+            pst.setString(4, cono_piezass.getText());
+            pst.setString(5, cofechaa.getText());
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            
+        } catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de registro"+e.getMessage());
+            
+        } 
+    
+    }
+    
+    
     /**
      * Creates new form cotizaciones
      */
     public cotizaciones() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -32,13 +79,13 @@ public class cotizaciones extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        cofechaa = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        coproductoss = new javax.swing.JTextField();
+        coclientee = new javax.swing.JTextField();
+        cofolioo = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
@@ -47,7 +94,7 @@ public class cotizaciones extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        cono_piezass = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +128,13 @@ public class cotizaciones extends javax.swing.JFrame {
         jLabel9.setText("Fecha:");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 130, -1));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 130, -1));
+
+        cofechaa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cofechaaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cofechaa, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 130, -1));
 
         jLabel10.setBackground(new java.awt.Color(123, 104, 238));
         jLabel10.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -100,9 +153,9 @@ public class cotizaciones extends javax.swing.JFrame {
         jLabel13.setText("Folio:");
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 130, -1));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 130, -1));
-        getContentPane().add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 130, -1));
-        getContentPane().add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, -1));
+        getContentPane().add(coproductoss, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 130, -1));
+        getContentPane().add(coclientee, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 130, -1));
+        getContentPane().add(cofolioo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 130, -1));
 
         jButton12.setBackground(new java.awt.Color(123, 104, 238));
         jButton12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -129,7 +182,7 @@ public class cotizaciones extends javax.swing.JFrame {
         jButton14.setBackground(new java.awt.Color(123, 104, 238));
         jButton14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setText("REGRESAR");
+        jButton14.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
         jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton14ActionPerformed(evt);
@@ -196,7 +249,7 @@ public class cotizaciones extends javax.swing.JFrame {
         jLabel12.setText("No. Piezas");
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 90, 130, -1));
-        getContentPane().add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 130, -1));
+        getContentPane().add(cono_piezass, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 130, -1));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
@@ -205,7 +258,16 @@ public class cotizaciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+
+    agregarCotizacion();
+JOptionPane.showMessageDialog(null, "Registro exitoso");     
+    
+     cofolioo.setText(" ");
+     coclientee.setText(" ");
+     coproductoss.setText(" ");
+     cono_piezass.setText(" ");
+     cofechaa.setText(" "); 
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -213,11 +275,22 @@ public class cotizaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
+     agregarCotizacion();
+    
+    
+     cofolioo.setText(" ");
+     coclientee.setText(" ");
+     coproductoss.setText(" ");
+     cono_piezass.setText(" ");
+     cofechaa.setText(" "); 
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        ventass newframe = new ventass();
+
+        newframe.setVisible(true);
+
+        this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -227,6 +300,10 @@ public class cotizaciones extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void cofechaaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cofechaaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cofechaaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,6 +341,11 @@ public class cotizaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField coclientee;
+    private javax.swing.JTextField cofechaa;
+    private javax.swing.JTextField cofolioo;
+    private javax.swing.JTextField cono_piezass;
+    private javax.swing.JTextField coproductoss;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
@@ -280,10 +362,5 @@ public class cotizaciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

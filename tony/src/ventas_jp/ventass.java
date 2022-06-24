@@ -16,7 +16,7 @@ public class ventass extends javax.swing.JFrame {
      */
     public ventass() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -40,62 +40,66 @@ public class ventass extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setBackground(new java.awt.Color(123, 104, 238));
         jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel5.setText("VENTAS");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 110, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 130, 30));
 
         conta.setBackground(new java.awt.Color(123, 104, 238));
         conta.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         conta.setForeground(new java.awt.Color(255, 255, 255));
+        conta.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\facturas.png")); // NOI18N
         conta.setText("CONTABILIDAD");
         conta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contaActionPerformed(evt);
             }
         });
-        getContentPane().add(conta, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 160, 50));
+        getContentPane().add(conta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 210, 50));
 
         puntv.setBackground(new java.awt.Color(123, 104, 238));
         puntv.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         puntv.setForeground(new java.awt.Color(255, 255, 255));
+        puntv.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\punto de venta.png")); // NOI18N
         puntv.setText("PUNTO DE VENTA");
         puntv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 puntvActionPerformed(evt);
             }
         });
-        getContentPane().add(puntv, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 160, 50));
+        getContentPane().add(puntv, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 180, 50));
 
         factu.setBackground(new java.awt.Color(123, 104, 238));
         factu.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         factu.setForeground(new java.awt.Color(255, 255, 255));
+        factu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/galeria/facturas.png"))); // NOI18N
         factu.setText("FACTURACION");
         factu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 factuActionPerformed(evt);
             }
         });
-        getContentPane().add(factu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 160, 50));
+        getContentPane().add(factu, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 190, 50));
 
         coti.setBackground(new java.awt.Color(123, 104, 238));
         coti.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         coti.setForeground(new java.awt.Color(255, 255, 255));
+        coti.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\pedidos.png")); // NOI18N
         coti.setText("COTIZACIONES");
         coti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cotiActionPerformed(evt);
             }
         });
-        getContentPane().add(coti, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 160, 50));
+        getContentPane().add(coti, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 190, 50));
 
         ped.setBackground(new java.awt.Color(123, 104, 238));
         ped.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         ped.setForeground(new java.awt.Color(255, 255, 255));
+        ped.setIcon(new javax.swing.ImageIcon(getClass().getResource("/galeria/pedidos.png"))); // NOI18N
         ped.setText("PEDIDOS");
         ped.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,35 +111,37 @@ public class ventass extends javax.swing.JFrame {
         reg.setBackground(new java.awt.Color(123, 104, 238));
         reg.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         reg.setForeground(new java.awt.Color(255, 255, 255));
-        reg.setText("REGRESAR");
+        reg.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
         reg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regActionPerformed(evt);
             }
         });
-        getContentPane().add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+        getContentPane().add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 30));
 
         servi.setBackground(new java.awt.Color(123, 104, 238));
         servi.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         servi.setForeground(new java.awt.Color(255, 255, 255));
+        servi.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\servicios.png")); // NOI18N
         servi.setText("SERVICIOS");
         servi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 serviActionPerformed(evt);
             }
         });
-        getContentPane().add(servi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 200, 160, 50));
+        getContentPane().add(servi, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 160, 50));
 
         produc.setBackground(new java.awt.Color(123, 104, 238));
         produc.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         produc.setForeground(new java.awt.Color(255, 255, 255));
+        produc.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\productos.png")); // NOI18N
         produc.setText("PRODUCTOS");
         produc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 producActionPerformed(evt);
             }
         });
-        getContentPane().add(produc, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 160, 50));
+        getContentPane().add(produc, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 210, 50));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
@@ -144,66 +150,66 @@ public class ventass extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void contaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contaActionPerformed
-        contabilidad newframe = new contabilidad();  
-        
+        contabilidad newframe = new contabilidad();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_contaActionPerformed
 
     private void puntvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_puntvActionPerformed
-        puntoventa newframe = new puntoventa(); 
-        
+        puntoventa newframe = new puntoventa();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_puntvActionPerformed
 
     private void factuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factuActionPerformed
-        facturacion newframe = new facturacion(); 
-        
+        facturacion newframe = new facturacion();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_factuActionPerformed
 
     private void cotiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cotiActionPerformed
-        cotizaciones newframe = new cotizaciones(); 
-        
+        cotizaciones newframe = new cotizaciones();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_cotiActionPerformed
 
     private void pedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedActionPerformed
-        pedidos newframe = new pedidos(); 
-        
+        pedidos1 newframe = new pedidos1();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_pedActionPerformed
 
     private void regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regActionPerformed
-        init newframe = new init(); 
-        
+        init newframe = new init();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_regActionPerformed
 
     private void serviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serviActionPerformed
-        servicios newframe = new servicios(); 
-        
+        servicios newframe = new servicios();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_serviActionPerformed
 
     private void producActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_producActionPerformed
-        productos newframe = new productos(); 
-        
+        productos newframe = new productos();
+
         newframe.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_producActionPerformed
 

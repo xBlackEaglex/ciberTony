@@ -5,53 +5,64 @@
  */
 package ventas_jp;
 
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-
 /**
  *
  * @author pauli
  */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement; 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class servicios extends javax.swing.JFrame {
 
+    public void agregarServicio() {
+    
+    conexion cc = new conexion();
+        Connection cx = cc.conect();
+       
+        String SQL = "insert into tabla_general (pno_nota,pcliente,pentrega,pcantidad,pdetalles,"
+                + "cofolio,cocliente,coproductos,cono_piezas,cofecha,"
+                + "pvcantidad,pvproducto,pvprecio,"
+                + "fanombre,faapellidos,farfc,facfdi,fadomicilio,facorreo,"
+                + "prclave,prdescripcion,prprecio,"
+                + "seide,sedetalles,secosto, "
+                + "clnombre,clapellidos,cldireccion,"
+                + "ticliente,tiasunto,titecnico,tidescripcion,tiestado,tifechainicio,tifechafin) "
+                + "value(0,'','',0,''  ,0,'','',0,'',  0,'',0,  '','','','','','',  '','',0,  ?,?,?,  '','','',  '','','','','','','' )";
+        
+    /* debo poner todos los campos de la tabla para que no marque error, los varchar llevan solo las comillas y los int llevan un cero **/
+        try {
+            
+            PreparedStatement pst=cx.prepareStatement(SQL);
+            
+            pst.setString(1, seidee.getText()); 
+            pst.setString(2, sedetalless.getText());
+            pst.setString(3, secostoo.getText());
+            
+            
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            
+        } catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de registro"+e.getMessage());
+            
+        } 
+    }
+    
     /**
      * Creates new form servicios
      */
     public servicios() {
-        initComponents(); 
-        this.setLocationRelativeTo(null);
-        
-        DefaultTableModel model = new DefaultTableModel(); 
-        
-        
-        TableColumnModel columnModel = mytable1.getColumnModel();
-        
-        model.addColumn("ID"); 
-        model.addColumn("Servicio:"); 
-        model.addColumn("Precio:"); 
-        
-        model.addRow(new Object[]{"01","Acta de nacimiento GTO", "$130.00"}); 
-        model.addRow(new Object[]{"02","Cambio de display(teléfonos)", "$1,600.00 + pieza"});
-        model.addRow(new Object[]{"03","Cambio de RAM", " $300.00 + pieza "});
-        model.addRow(new Object[]{"04","Cita para licencia de conducir","$70.00"}); 
-        model.addRow(new Object[]{"05","cita para placas", "$70.00"}); 
-        model.addRow(new Object[]{"06","CURP", "$15.00"}); 
-        model.addRow(new Object[]{"07","Diseño de logos", "$400.00 por logo "}); 
-        model.addRow(new Object[]{"08","Diseño de lona publicitariaS", "$750 por diseño"}); 
-        model.addRow(new Object[]{"09","Formateo", "$450.00"}); 
-        model.addRow(new Object[]{"10","Instalacion de Drivers", "$300.00"}); 
-        model.addRow(new Object[]{"11","Instalacion de office", "$250.00"}); 
-        model.addRow(new Object[]{"12","Instalacion de Red Alambrica", "$1900.00"}); 
-        model.addRow(new Object[]{"13","Instalacion de Programas", "$50 c/u"}); 
-        model.addRow(new Object[]{"14","Reemplazo de Cabezal", "$1,200.00"}); 
-        model.addRow(new Object[]{"15","Relleno de Cartuchos", "$90.00"}); 
-        model.addRow(new Object[]{"16","Reemplazo de Placa", "$1,600.00"}); 
-        model.addRow(new Object[]{"17","Reparacion de impresora", "$350.00"}); 
-        model.addRow(new Object[]{"18","Reparacionde inyectores", "$200.00"});    
-        
-        
-        
-        mytable1.setModel(model);    
+        initComponents();
+        setLocationRelativeTo(null);
+
     }
 
     /**
@@ -63,104 +74,164 @@ public class servicios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mytable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        jLabel = new javax.swing.JLabel();
+        seidee = new javax.swing.JTextField();
+        sedetalless = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        secostoo = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jButton1.setBackground(new java.awt.Color(123, 104, 238));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SERVICIOS");
-
-        mytable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
-        mytable1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        mytable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID:", "Servicio:", "Precio:"
-            }
-        ));
-        mytable1.setRowHeight(24);
-        mytable1.setRowMargin(2);
-        jScrollPane1.setViewportView(mytable1);
-        if (mytable1.getColumnModel().getColumnCount() > 0) {
-            mytable1.getColumnModel().getColumn(0).setPreferredWidth(400);
-        }
 
         jButton2.setBackground(new java.awt.Color(123, 104, 238));
         jButton2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("REGRESAR");
+        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1049, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 37, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel.setBackground(new java.awt.Color(123, 104, 238));
+        jLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel.setText("IDE");
+        jLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
+
+        seidee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seideeActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setBackground(new java.awt.Color(123, 104, 238));
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel8.setText("DETALLES");
+        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
+
+        jLabel7.setBackground(new java.awt.Color(123, 104, 238));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setText("COSTO");
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
+
+        jButton3.setBackground(new java.awt.Color(123, 104, 238));
+        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("LIMPIAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(123, 104, 238));
+        jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("GUARDAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(5, 240, 122));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        jLabel1.setText("SERVICIOS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(seidee, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sedetalless, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(secostoo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(58, 58, 58))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(seidee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sedetalless, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(secostoo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ventass newframe = new ventass();
+
+        newframe.setVisible(true);
+
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void seideeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seideeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seideeActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        seidee.setText("");
+        sedetalless.setText("");
+        secostoo.setText("");
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        agregarServicio(); 
+        JOptionPane.showMessageDialog(null, "Registro exitoso");
+        
+        seidee.setText("");
+        sedetalless.setText("");
+        secostoo.setText("");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,10 +269,15 @@ public class servicios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable mytable1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField secostoo;
+    private javax.swing.JTextField sedetalless;
+    private javax.swing.JTextField seidee;
     // End of variables declaration//GEN-END:variables
 }

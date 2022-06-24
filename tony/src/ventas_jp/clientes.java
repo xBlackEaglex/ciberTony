@@ -9,14 +9,65 @@ package ventas_jp;
  *
  * @author pauli
  */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement; 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class clientes extends javax.swing.JFrame {
 
+     public void agregarCliente() {
+    
+    conexion cc = new conexion();
+        Connection cx = cc.conect();
+       
+        String SQL = "insert into tabla_general (pno_nota,pcliente,pentrega,pcantidad,pdetalles,"
+                + "cofolio,cocliente,coproductos,cono_piezas,cofecha,"
+                + "pvcantidad,pvproducto,pvprecio,"
+                + "fanombre,faapellidos,farfc,facfdi,fadomicilio,facorreo,"
+                + "prclave,prdescripcion,prprecio,"
+                + "seide,sedetalles,secosto, "
+                + "clnombre,clapellidos,cldireccion,"
+                + "ticliente,tiasunto,titecnico,tidescripcion,tiestado,tifechainicio,tifechafin) "
+                + "value(0,'','',0,''  ,0,'','',0,'',  0,'',0,  '','','','','','',  '','',0,  0,'',0,  ?,?,?,  '','','','','','','' )";
+        
+    /* debo poner todos los campos de la tabla para que no marque error, los varchar llevan solo las comillas y los int llevan un cero **/
+        try {
+            
+            PreparedStatement pst=cx.prepareStatement(SQL);
+            
+            pst.setString(1, clnombree.getText()); 
+            pst.setString(2, clapellidoss.getText());
+            pst.setString(3, cldireccionn.getText());
+            
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            
+        } catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de registro"+e.getMessage());
+            
+        } 
+    }
+    
     /**
      * Creates new form clientes
      */
     public clientes() {
+        
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        /**
+         * Codigo para centrar ventanas NOTA: tiene que ir siempre despues del
+         * codigo initComponents();
+         *
+         */
     }
 
     /**
@@ -28,21 +79,167 @@ public class clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        clnombree = new javax.swing.JTextField();
+        cldireccionn = new javax.swing.JTextField();
+        registrar = new javax.swing.JButton();
+        limpiar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        clapellidoss = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        regresar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        clnombree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clnombreeActionPerformed(evt);
+            }
+        });
+
+        registrar.setBackground(new java.awt.Color(123, 104, 238));
+        registrar.setText("REGISTRAR");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
+
+        limpiar.setBackground(new java.awt.Color(123, 104, 238));
+        limpiar.setText("LIMPIAR");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("NOMBRE");
+
+        jLabel2.setText("APELLIDOS");
+
+        jLabel4.setText("DIRECCION");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(registrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(limpiar)
+                .addGap(65, 65, 65))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addComponent(clnombree, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cldireccionn, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(clapellidoss))))
+                .addGap(54, 54, 54))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registrar)
+                    .addComponent(limpiar))
+                .addGap(54, 54, 54)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clnombree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(clapellidoss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cldireccionn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(42, 42, 42))
+        );
+
+        jLabel3.setText("CLIENTES NUEVOS");
+
+        regresar.setBackground(new java.awt.Color(123, 104, 238));
+        regresar.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
+        regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(regresar)
+                        .addGap(73, 73, 73)
+                        .addComponent(jLabel3)
+                        .addGap(0, 289, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(regresar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void clnombreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clnombreeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clnombreeActionPerformed
+
+    private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
+        
+        init newframe = new init();
+        
+        newframe.setVisible(true);
+        
+        this.dispose();
+    }//GEN-LAST:event_regresarActionPerformed
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        agregarCliente(); 
+        JOptionPane.showMessageDialog(null, "Registro exitoso");
+        
+        clnombree.setText("");
+        clapellidoss.setText("");
+        cldireccionn.setText("");        
+
+    }//GEN-LAST:event_registrarActionPerformed
+
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        
+        clnombree.setText("");
+        cldireccionn.setText("");
+        
+    }//GEN-LAST:event_limpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +277,16 @@ public class clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField clapellidoss;
+    private javax.swing.JTextField cldireccionn;
+    private javax.swing.JTextField clnombree;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton limpiar;
+    private javax.swing.JButton registrar;
+    private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
 }

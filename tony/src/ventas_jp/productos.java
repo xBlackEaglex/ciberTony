@@ -5,47 +5,66 @@
  */
 package ventas_jp;
 
-import javax.swing.table.DefaultTableModel;
+//import javax.swing.table.DefaultTableModel;
 /*import javax.swing.table.TableColumnModel;
 
 
 
-/**
+ /**
  *
  * @author pauli
  */
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement; 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
+
 public class productos extends javax.swing.JFrame {
+    
+    public void agregarProducto() {
+    
+    conexion cc = new conexion();
+        Connection cx = cc.conect();
+       
+        String SQL = "insert into tabla_general (pno_nota,pcliente,pentrega,pcantidad,pdetalles,"
+                + "cofolio,cocliente,coproductos,cono_piezas,cofecha,"
+                + "pvcantidad,pvproducto,pvprecio,"
+                + "fanombre,faapellidos,farfc,facfdi,fadomicilio,facorreo,"
+                + "prclave,prdescripcion,prprecio,"
+                + "seide,sedetalles,secosto, "
+                + "clnombre,clapellidos,cldireccion,"
+                + "ticliente,tiasunto,titecnico,tidescripcion,tiestado,tifechainicio,tifechafin) "
+                + "value(0,'','',0,''  ,0,'','',0,'',  0,'',0,  '','','','','','',  ?,?,?,  0,'',0,  '','','',  '','','','','','','' )";
+        
+    /* debo poner todos los campos de la tabla para que no marque error, los varchar llevan solo las comillas y los int llevan un cero **/
+        try {
+            
+            PreparedStatement pst=cx.prepareStatement(SQL);
+            
+            pst.setString(1, prclavee.getText()); 
+            pst.setString(2, prdescripcionn.getText());
+            pst.setString(3, prprecioo.getText());
+            
+            
+            
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            
+        } catch (Exception e) {
+            
+            
+            JOptionPane.showMessageDialog(null, "Error de registro"+e.getMessage());
+            
+        } 
+    
 
     /**
      * Creates new form productos
      */
-    public productos() {
-        
-        
-       
-       initComponents();
-       this.setLocationRelativeTo(null);
-       DefaultTableModel model2= new DefaultTableModel(); 
-       
-       model2.addColumn("ID");
-       model2.addColumn("Producto");
-       model2.addColumn("Precio"); 
-       
-       model2.addRow(new Object[]{"001","Disco Duro 1TB","$1,400.00"});
-       model2.addRow(new Object[]{"002","Disco Duro 500gb","$700.00"});
-       model2.addRow(new Object[]{"003","Disco Duro Solido 240gb", "$890.00"});
-       model2.addRow(new Object[]{"004","Disco Duro 4TB", "$3,700.00"});
-       model2.addRow(new Object[]{"005","Router TP-Link basico", "$890.00"});
-       model2.addRow(new Object[]{"006","Sistema de Video Vigilancia", "$9,200.00"});
-       model2.addRow(new Object[]{"007","Disco Duro Solido 1TB", "$2,400.00"});
-       model2.addRow(new Object[]{"008","Disco Duro Solido 500Gb", "$1,300.00"});
-       model2.addRow(new Object[]{"009","Tonner para impresora", " $600.00"});
-       model2.addRow(new Object[]{"010","Cuenta de Netflix (compartida)", "$90.00"});
-       model2.addRow(new Object[]{"011","Cuenta de Spotify (compartida)", "$90.00"});
-       model2.addRow(new Object[]{"012","Cuenta de HBO (compartida)", "$90.00"});
-       model2.addRow(new Object[]{"013","Cuenta de Disney+ (compartida)", "$90.00"});
-       
-       mytable2.setModel(model2);  
     
     }
 
@@ -58,74 +77,86 @@ public class productos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        prguardar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mytable2 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        prprecioo = new javax.swing.JTextField();
+        prdescripcionn = new javax.swing.JTextField();
+        prclavee = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(123, 104, 238));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("PRODUCTOS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        prguardar.setBackground(new java.awt.Color(123, 104, 238));
+        prguardar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        prguardar.setForeground(new java.awt.Color(255, 255, 255));
+        prguardar.setText("GUARDAR");
+        prguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                prguardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 240, 40));
-
-        jButton2.setBackground(new java.awt.Color(123, 104, 238));
-        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("REGRESAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 140, 30));
-
-        jLabel4.setBackground(new java.awt.Color(123, 104, 238));
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel4.setText("solicitalo en el apartado de cotizaciones.");
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 430, -1));
+        getContentPane().add(prguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 140, 30));
 
         jLabel5.setBackground(new java.awt.Color(123, 104, 238));
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel5.setText("Si el producto que necesitas no esta en la lista,  ");
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel5.setText("PRODUCTOS");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 430, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 160, 30));
 
-        mytable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID", "Producto", "Precio"
+        jLabel7.setBackground(new java.awt.Color(123, 104, 238));
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel7.setText("PRECIO:");
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 200, -1));
+
+        jLabel8.setBackground(new java.awt.Color(123, 104, 238));
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel8.setText("DESCRIPCION:");
+        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 200, -1));
+
+        jLabel9.setBackground(new java.awt.Color(123, 104, 238));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel9.setText("CLAVE:");
+        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(5, 240, 122)));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 200, -1));
+        getContentPane().add(prprecioo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 180, -1));
+        getContentPane().add(prdescripcionn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 180, -1));
+
+        prclavee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prclaveeActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(mytable2);
+        });
+        getContentPane().add(prclavee, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 180, -1));
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, 250));
+        jButton3.setBackground(new java.awt.Color(123, 104, 238));
+        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("LIMPIAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 140, 30));
+
+        jButton4.setBackground(new java.awt.Color(123, 104, 238));
+        jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\pauli\\Documents\\ventas_jp actualizado\\ventas_jp\\ventas_jp\\src\\galeria\\salir.png")); // NOI18N
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 140, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
@@ -133,18 +164,40 @@ public class productos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void prguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prguardarActionPerformed
+       agregarProducto(); 
+       JOptionPane.showMessageDialog(null, "Registro exitoso"); 
+       
+       prclavee.setText("");
+       prdescripcionn.setText("");
+       prprecioo.setText("");
+    }//GEN-LAST:event_prguardarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+prclavee.setText("");
+prdescripcionn.setText("");
+prprecioo.setText("");
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        ventass newframe = new ventass();
+
+        newframe.setVisible(true);
+
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void prclaveeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prclaveeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_prclaveeActionPerformed
 
     /**
      * @param args the command line arguments
      */
-     public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -175,15 +228,19 @@ public class productos extends javax.swing.JFrame {
             }
         });
     }
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable mytable2;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField prclavee;
+    private javax.swing.JTextField prdescripcionn;
+    private javax.swing.JButton prguardar;
+    private javax.swing.JTextField prprecioo;
     // End of variables declaration//GEN-END:variables
 }
