@@ -2,6 +2,7 @@ package almacen;
 
 
 import almacen.almacen1;
+import compras.PEDIDO;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,6 +14,12 @@ import almacen.almacen1;
  * @author Martin Melgoza
  */
 public class embarque_cliente extends javax.swing.JFrame {
+    
+    
+    PEDIDO venpedido = new PEDIDO();
+    
+    
+    
 
     /**
      * Creates new form embarque_cliente
@@ -66,6 +73,11 @@ public class embarque_cliente extends javax.swing.JFrame {
         });
 
         ingresar1.setText("INGRESAR");
+        ingresar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -163,6 +175,16 @@ public class embarque_cliente extends javax.swing.JFrame {
 ob.setVisible (true);
 dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_regresar1ActionPerformed
+
+    private void ingresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        venpedido.setVisible(true);
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_ingresar1ActionPerformed
 
     /**
      * @param args the command line arguments

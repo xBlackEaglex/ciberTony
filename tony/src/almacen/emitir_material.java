@@ -2,6 +2,7 @@ package almacen;
 
 
 import almacen.almacen1;
+import compras.O_P;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,6 +15,11 @@ import almacen.almacen1;
  */
 public class emitir_material extends javax.swing.JFrame {
 
+    
+    O_P venOP = new O_P();
+    
+    
+    
     /**
      * Creates new form emitir_material
      */
@@ -61,6 +67,11 @@ public class emitir_material extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(123, 104, 238));
         jButton1.setText("ENTRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         regresar2.setText("Regresar");
         regresar2.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +138,17 @@ public class emitir_material extends javax.swing.JFrame {
 ob.setVisible (true);
 dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_regresar2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        venOP.setVisible(true);
+        this.setVisible(false);
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

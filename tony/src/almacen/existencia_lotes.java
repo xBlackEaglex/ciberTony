@@ -2,6 +2,7 @@ package almacen;
 
 
 import almacen.almacen1;
+import compras.existencias;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,6 +14,11 @@ import almacen.almacen1;
  * @author Martin Melgoza
  */
 public class existencia_lotes extends javax.swing.JFrame {
+    
+    
+    existencias venexi = new existencias();
+    
+    
 
     /**
      * Creates new form existencia_lotes
@@ -87,6 +93,11 @@ public class existencia_lotes extends javax.swing.JFrame {
         });
 
         ingresar2.setText("INGRESAR");
+        ingresar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +158,16 @@ public class existencia_lotes extends javax.swing.JFrame {
 ob.setVisible (true);
 dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_regresar4ActionPerformed
+
+    private void ingresar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresar2ActionPerformed
+        // TODO add your handling code here:
+        
+        venexi.setVisible(true);
+        this.setVisible(false);
+        
+        
+        
+    }//GEN-LAST:event_ingresar2ActionPerformed
 
     /**
      * @param args the command line arguments
