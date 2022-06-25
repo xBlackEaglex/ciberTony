@@ -3,35 +3,18 @@ package produccion;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-import tony.conexion;
 
 /**
  *
  * @author Alitza Cervantes
- * 
  */
 public class r_inventario extends javax.swing.JFrame {
-    
-    
-    
-    conexion cc = new conexion();
-    Connection cx = cc.conect();
-    
-    
-    
-    
-    
 
     /**
-     * 
-     * 
-     * 
-     * 
      * Creates new form r_inventario
      */
     public r_inventario() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -166,10 +149,11 @@ public class r_inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_fechaActionPerformed
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
-
+conexion con =new conexion();
+Connection reg=con.conect();
 
     try{
-        PreparedStatement ps=cx.prepareStatement("INSERT INTO r_inventario (No_orden, fecha, descripcion, encargado, status) values (?,?,?,?,?)");
+        PreparedStatement ps=reg.prepareStatement("INSERT INTO r_inventario (No_orden, fecha, descripcion, encargado, status) values (?,?,?,?,?)");
   
         ps.setString(1, orden.getText());
         ps.setString(2, fecha.getText());
@@ -188,8 +172,6 @@ public class r_inventario extends javax.swing.JFrame {
         status.setText("");
     }
         catch (Exception e){
-         
-            JOptionPane.showMessageDialog(null, "ERROR " + e );
             
         } 
     }//GEN-LAST:event_registrarActionPerformed

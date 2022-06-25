@@ -18,7 +18,6 @@ public class Trazabilidad extends javax.swing.JFrame {
      */
     public Trazabilidad() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
 

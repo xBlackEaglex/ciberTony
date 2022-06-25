@@ -12,7 +12,6 @@ public class r_produccion extends javax.swing.JFrame {
      */
     public r_produccion() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
 
@@ -65,6 +64,8 @@ public class r_produccion extends javax.swing.JFrame {
             }
         });
         jPanel2.add(Inventario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/IsoLogo.jpg"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(123, 104, 238));
@@ -80,7 +81,6 @@ public class r_produccion extends javax.swing.JFrame {
 
         fondo.setBackground(new java.awt.Color(153, 0, 153));
         fondo.setForeground(new java.awt.Color(0, 204, 204));
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/multimedia/fondo.jpg"))); // NOI18N
         jPanel2.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 4, 580, 400));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

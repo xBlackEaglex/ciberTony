@@ -12,7 +12,6 @@ public class Ensamble extends javax.swing.JFrame {
      */
     public Ensamble() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -93,7 +92,7 @@ public class Ensamble extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alitza Cervantes\\OneDrive\\Escritorio\\pc_gamer-removebg-preview.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pc_gamer-removebg-preview.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setText("PROPIEDADES");
@@ -219,7 +218,7 @@ public class Ensamble extends javax.swing.JFrame {
             }
         });
 
-        jLabel21.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alitza Cervantes\\OneDrive\\Escritorio\\laptop-removebg-preview.png")); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/laptop-removebg-preview.png"))); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel22.setText("PROPIEDADES");
@@ -342,7 +341,7 @@ public class Ensamble extends javax.swing.JFrame {
         jLabel38.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel38.setText("Creación de programas de texto, imágenes y video");
 
-        jLabel39.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alitza Cervantes\\OneDrive\\Escritorio\\WhatsApp Image 2022-06-11 at 9.45.13 AM.jpg")); // NOI18N
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/WhatsApp Image 2022-06-11 at 9.45.13 AM.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -409,7 +408,7 @@ public class Ensamble extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Alitza Cervantes\\OneDrive\\Escritorio\\impresora-removebg-preview.png")); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/impresora-removebg-preview.png"))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel13.setText("PROPIEDADES");
