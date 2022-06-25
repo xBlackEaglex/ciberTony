@@ -1,6 +1,4 @@
 package rrhh;
-
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,19 +8,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import tony.conexion;
 
 public class editar extends javax.swing.JFrame {
-    
-    
-    conexion cc = new conexion();
-    Connection cx = cc.conect();
-    
 
     
     public editar() {
         initComponents();
-        this.setLocationRelativeTo(null);
         
        /** try {
         DefaultTableModel modelo=new DefaultTableModel ();
@@ -415,12 +406,13 @@ where = "WHERE NDEEMPLEADO ='"+campo+"'";
         tabla.setModel(modelo);
         PreparedStatement ps=null;
         ResultSet rs=null;
-
+        RRHH Con=new RRHH();
+        java.sql.Connection con= Con.conect();
         
         String sql ="Select NDEEMPLEADO, NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO,FECHA_DE_NACIMIENTO, "
                 + "DEPARTAMENTO, SEXO, FECHA_DE_INGRESO, ANTIGUEDAD From contrato "+where;
        System.out.println(sql);
-        ps= cx.prepareStatement(sql);
+        ps= con.prepareStatement(sql);
         rs= ps.executeQuery();
         ResultSetMetaData rsMD= rs.getMetaData();
         int cantidadColumnas =rsMD.getColumnCount();

@@ -11,21 +11,16 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
-import tony.conexion;
 
 /**
  *
  * @author padil
  */
 public class colaboradores extends javax.swing.JFrame {
-    
-    conexion cc = new conexion();
-    Connection cx = cc.conect();
-    
 
     public colaboradores() {
         initComponents();
-        this.setLocationRelativeTo(null);
+  
     }
 
     /**
@@ -167,12 +162,13 @@ where = "WHERE NDEEMPLEADO ='"+campo+"'";
         TABLADETRABAJADORES.setModel(modelo);
         PreparedStatement ps=null;
         ResultSet rs=null;
-
+        RRHH Con=new RRHH();
+        Connection con= Con.conect();
         
         String sql ="Select NDEEMPLEADO, NOMBRE, APELLIDO_PATERNO, APELLIDO_MATERNO,FECHA_DE_NACIMIENTO, "
                 + "DEPARTAMENTO, SEXO, FECHA_DE_INGRESO, ANTIGUEDAD From contrato "+where;
        System.out.println(sql);
-        ps= cx.prepareStatement(sql);
+        ps= con.prepareStatement(sql);
         rs= ps.executeQuery();
         ResultSetMetaData rsMD= rs.getMetaData();
         int cantidadColumnas =rsMD.getColumnCount();

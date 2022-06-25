@@ -4,26 +4,20 @@ package rrhh;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
-import tony.conexion;
 
 /**
  *
  * @author padil
  */
 public class CONTRATO_DE_PERSONAL extends javax.swing.JFrame {
-    
-    conexion cc = new conexion();
-    Connection cx = cc.conect();
-    
-    
 
     /**
      * Creates new form CONTRATO_DE_PERSONAL
      */
     public CONTRATO_DE_PERSONAL() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -47,15 +41,18 @@ public class CONTRATO_DE_PERSONAL extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         NOMBRE = new javax.swing.JTextField();
         APATERNO = new javax.swing.JTextField();
-        SEXO = new javax.swing.JTextField();
         DEPARTAMENTO = new javax.swing.JTextField();
         AMATERNO = new javax.swing.JTextField();
         guardar = new javax.swing.JButton();
         nuevo = new javax.swing.JButton();
         salir = new javax.swing.JButton();
-        FNACIMIENTO = new javax.swing.JTextField();
-        FINGRESO = new javax.swing.JTextField();
         ANTIGUEDAD = new javax.swing.JTextField();
+        MUJER = new javax.swing.JRadioButton();
+        HOMBRE = new javax.swing.JRadioButton();
+        fnacimiento = new com.toedter.calendar.JDateChooser();
+        fingreso = new com.toedter.calendar.JDateChooser();
+        NACIMIENTO = new javax.swing.JTextField();
+        INGRESO = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -102,21 +99,18 @@ public class CONTRATO_DE_PERSONAL extends javax.swing.JFrame {
         jLabel8.setBackground(new java.awt.Color(123, 104, 238));
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("FECHA DE INGRESO:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 373, 170, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 170, 30));
 
         jLabel9.setBackground(new java.awt.Color(123, 104, 238));
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("ANTIGUEDAD");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 140, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 140, 20));
 
         NOMBRE.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jPanel1.add(NOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 250, 30));
 
         APATERNO.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jPanel1.add(APATERNO, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 250, 30));
-
-        SEXO.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jPanel1.add(SEXO, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 250, 30));
 
         DEPARTAMENTO.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jPanel1.add(DEPARTAMENTO, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 250, 30));
@@ -156,19 +150,45 @@ public class CONTRATO_DE_PERSONAL extends javax.swing.JFrame {
             }
         });
         jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 100, 50));
-        jPanel1.add(FNACIMIENTO, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 250, 30));
-        jPanel1.add(FINGRESO, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 250, 30));
-        jPanel1.add(ANTIGUEDAD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 250, 30));
+        jPanel1.add(ANTIGUEDAD, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 250, 30));
+
+        MUJER.setText("MUJER");
+        jPanel1.add(MUJER, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 90, -1));
+
+        HOMBRE.setText("HOMBRE");
+        HOMBRE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HOMBREActionPerformed(evt);
+            }
+        });
+        jPanel1.add(HOMBRE, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 90, -1));
+
+        fnacimiento.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(fnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 240, 30));
+
+        fingreso.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(fingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 240, 30));
+
+        NACIMIENTO.setEditable(false);
+        NACIMIENTO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NACIMIENTOActionPerformed(evt);
+            }
+        });
+        jPanel1.add(NACIMIENTO, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 10, 30));
+
+        INGRESO.setEditable(false);
+        jPanel1.add(INGRESO, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 10, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 658, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
         );
 
         pack();
@@ -178,10 +198,9 @@ public class CONTRATO_DE_PERSONAL extends javax.swing.JFrame {
 NOMBRE.setText("");
 APATERNO.setText("");
 AMATERNO.setText("");
-FNACIMIENTO.setText("");
 DEPARTAMENTO.setText("");
-SEXO.setText("");
-FINGRESO.setText("");
+
+
 ANTIGUEDAD.setText("");
     }//GEN-LAST:event_nuevoActionPerformed
 
@@ -192,23 +211,49 @@ ANTIGUEDAD.setText("");
     }//GEN-LAST:event_salirActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+RRHH con=new RRHH();
+Connection reg=con.conect();
+String sexo;
+int dia,mes,año;
+int diai,mesi,añoi;
+String fecha;
+String fechai;
 
+dia=fnacimiento.getCalendar().get(Calendar.DAY_OF_MONTH);
+mes=fnacimiento.getCalendar().get(Calendar.MONTH);
+año=fnacimiento.getCalendar().get(Calendar.YEAR);
 
+diai=fingreso.getCalendar().get(Calendar.DAY_OF_MONTH);
+mesi=fingreso.getCalendar().get(Calendar.MONTH);
+añoi=fingreso.getCalendar().get(Calendar.YEAR);
+
+fechai=añoi+"/"+mesi+"/"+diai;
+fecha=año+"/"+mes+"/"+dia;
+INGRESO.setText(fechai);
+NACIMIENTO.setText(fecha);
+if (MUJER.isSelected()==true){
+sexo="M";
+
+}else if (HOMBRE.isSelected()== true ){
+    sexo="H";
+}else{sexo ="M";
+
+}
 try{
-PreparedStatement ps=cx.prepareStatement("insert into contrato (NOMBRE, APELLIDO_PATERNO, "
+PreparedStatement ps=reg.prepareStatement("insert into contrato (NOMBRE, APELLIDO_PATERNO, "
         + "APELLIDO_MATERNO,FECHA_DE_NACIMIENTO, DEPARTAMENTO, "
         + "SEXO, FECHA_DE_INGRESO, ANTIGUEDAD) values (?,?,?,?,?,?,?,?)");
 ps.setString(1, NOMBRE.getText());
 ps.setString(2, APATERNO.getText());
 ps.setString(3, AMATERNO.getText());
-ps.setString(4, FNACIMIENTO.getText());
+ps.setString(4, NACIMIENTO.getText());
 ps.setString(5, DEPARTAMENTO.getText());
-ps.setString(6, SEXO.getText());
-ps.setString(7, FINGRESO.getText());
+ps.setString(6, sexo);
+ps.setString(7, INGRESO.getText());
 ps.setString(8, ANTIGUEDAD.getText());
 ps.executeUpdate();
+JOptionPane.showMessageDialog(null,"El colaborador fue ingresado correctamente");
 
-    JOptionPane.showMessageDialog(this, "Registro Exitoso");
 
 
 }
@@ -219,6 +264,14 @@ catch(Exception e){
     
     
 }    }//GEN-LAST:event_guardarActionPerformed
+
+    private void HOMBREActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HOMBREActionPerformed
+
+    }//GEN-LAST:event_HOMBREActionPerformed
+
+    private void NACIMIENTOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NACIMIENTOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NACIMIENTOActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,10 +313,13 @@ catch(Exception e){
     private javax.swing.JTextField ANTIGUEDAD;
     private javax.swing.JTextField APATERNO;
     private javax.swing.JTextField DEPARTAMENTO;
-    private javax.swing.JTextField FINGRESO;
-    private javax.swing.JTextField FNACIMIENTO;
+    private javax.swing.JRadioButton HOMBRE;
+    private javax.swing.JTextField INGRESO;
+    private javax.swing.JRadioButton MUJER;
+    private javax.swing.JTextField NACIMIENTO;
     private javax.swing.JTextField NOMBRE;
-    private javax.swing.JTextField SEXO;
+    private com.toedter.calendar.JDateChooser fingreso;
+    private com.toedter.calendar.JDateChooser fnacimiento;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

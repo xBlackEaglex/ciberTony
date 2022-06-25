@@ -16,7 +16,6 @@ public class horarios extends javax.swing.JFrame {
      */
     public horarios() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
