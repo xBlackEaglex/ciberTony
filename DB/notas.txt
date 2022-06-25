@@ -1,0 +1,2 @@
+esta base de datos fue creada en mysql, contiene las diferentes
+tablas creadas para el proyecto  
